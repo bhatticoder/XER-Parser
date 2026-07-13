@@ -1,0 +1,20 @@
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary and local output files
+uploads/
+output/
+*.db
+*.sqlite

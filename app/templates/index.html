@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XER Analytics — AI-Powered Project Schedule Intelligence</title>
+    <meta name="description" content="Upload XER/MPP project files for automated CPM analysis, schedule variance detection, and AI-powered risk mitigation reporting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <!-- Animated Background Particles -->
+    <div class="bg-grid"></div>
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1>XER Analytics</h1>
+                    <span class="brand-sub">AI-Powered Schedule Intelligence</span>
+                </div>
+            </div>
+            <div class="nav-badges">
+                <span class="badge badge-live">● Live</span>
+                <span class="badge badge-version">v2.0</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2 class="hero-title">Project Schedule<br><span class="gradient-text">Risk Intelligence</span></h2>
+                <p class="hero-desc">Upload your project files. Get automated CPM analysis, delay detection, and AI-powered executive mitigation reports.</p>
+            </div>
+            <div class="pipeline-steps">
+                <div class="step" id="step-upload">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <span>Ingest</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step" id="step-process">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    </div>
+                    <span>Pandas</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step" id="step-graph">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><line x1="8.6" y1="7.4" x2="15.4" y2="16.6"/><line x1="8.6" y1="6" x2="15" y2="6"/></svg>
+                    </div>
+                    <span>CPM Graph</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step" id="step-report">
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a5 5 0 0 1 5 5c0 2.76-2.24 5-5 5s-5-2.24-5-5a5 5 0 0 1 5-5z"/><path d="M2 20c0-3.31 4.47-6 10-6s10 2.69 10 6"/></svg>
+                    </div>
+                    <span>AI Report</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Card -->
+        <section class="card upload-card" id="upload-section">
+            <div class="card-header">
+                <h2>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="card-icon">
+                        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                        <path d="M12 12v9"/><path d="m16 16-4-4-4 4"/>
+                    </svg>
+                    Upload Project Files
+                </h2>
+                <p class="card-subtitle">Supports <code>.xer</code> <code>.mpp</code> <code>.mpx</code> <code>.xml</code> and more — single or multiple files</p>
+            </div>
+
+            <div class="upload-area" id="upload-area">
+                <input type="file" id="file-input" accept="{{ accepted_extensions }}" multiple style="display:none;">
+                <div class="upload-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="upload-svg">
+                        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                        <path d="M12 12v9"/><path d="m16 16-4-4-4 4"/>
+                    </svg>
+                </div>
+                <p class="upload-text">Drop project files here</p>
+                <p class="upload-hint">or <a href="#" id="browse-link">browse your computer</a></p>
+            </div>
+
+            <!-- API Key Section -->
+            <div class="api-key-section">
+                <label class="api-key-label" for="api-key-input">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="label-icon">
+                        <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                    </svg>
+                    Groq API Key <span class="optional-tag">optional</span>
+                </label>
+                <div class="api-key-input-wrap">
+                    <input type="password" id="api-key-input" class="api-key-input"
+                        placeholder="Paste your Groq API key for AI reports"
+                        autocomplete="off">
+                    <button type="button" class="btn-toggle-key" id="toggle-key-btn" title="Show/Hide">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="api-key-hint">Without a key, reports use deterministic offline analysis. Get a key at <a href="https://console.groq.com/keys" target="_blank">Groq Console</a></p>
+            </div>
+
+            <!-- File Queue -->
+            <div id="file-queue" class="file-queue" style="display:none;">
+                <div class="queue-header">
+                    <h3 id="queue-count">0 files selected</h3>
+                    <button class="btn-secondary" id="clear-queue-btn">Clear All</button>
+                </div>
+                <ul id="queue-list" class="queue-list"></ul>
+                <button class="btn-primary btn-analyze" id="analyze-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                    Run Full Analytics Pipeline
+                </button>
+            </div>
+
+            <!-- Progress -->
+            <div id="upload-progress" class="progress-wrap" style="display:none;">
+                <div class="progress-info">
+                    <span id="progress-label">Initializing pipeline...</span>
+                    <span id="progress-pct">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div id="pipeline-status" class="pipeline-status" style="display:none;">
+                    <div class="status-item" id="status-ingest"><span class="status-dot"></span> Ingestion (MPXJ)</div>
+                    <div class="status-item" id="status-pandas"><span class="status-dot"></span> Processing (Pandas)</div>
+                    <div class="status-item" id="status-graph"><span class="status-dot"></span> Graph Analytics (CPM)</div>
+                    <div class="status-item" id="status-llm"><span class="status-dot"></span> AI Report (Gemini)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-section" style="display:none;">
+
+            <!-- Metrics Dashboard -->
+            <div class="metrics-grid" id="metrics-grid" style="display:none;">
+                <div class="metric-card">
+                    <div class="metric-value" id="m-tasks">—</div>
+                    <div class="metric-label">Total Activities</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="m-relations">—</div>
+                    <div class="metric-label">Dependencies</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="m-critical">—</div>
+                    <div class="metric-label">Critical Path</div>
+                </div>
+                <div class="metric-card metric-card-alert">
+                    <div class="metric-value" id="m-delayed">—</div>
+                    <div class="metric-label">Delayed Tasks</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="m-nodes">—</div>
+                    <div class="metric-label">Graph Nodes</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="m-edges">—</div>
+                    <div class="metric-label">Graph Edges</div>
+                </div>
+            </div>
+
+            <!-- Delayed Tasks Table -->
+            <div class="card" id="delayed-card" style="display:none;">
+                <div class="card-header">
+                    <h2>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="card-icon">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Schedule Variance Bottlenecks
+                    </h2>
+                </div>
+                <div class="table-wrap">
+                    <table class="data-table" id="delayed-table">
+                        <thead>
+                            <tr>
+                                <th>Activity Code</th>
+                                <th>Activity Name</th>
+                                <th>Duration (d)</th>
+                                <th>Delay (d)</th>
+                                <th>Total Float (d)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="delayed-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Report Section -->
+            <div class="card report-card" id="report-card" style="display:none;">
+                <div class="card-header">
+                    <h2>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="card-icon">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        Executive Mitigation Report
+                    </h2>
+                    <p class="card-subtitle" id="report-source"></p>
+                </div>
+                <div class="report-content" id="report-content"></div>
+                <div class="report-actions">
+                    <button class="btn-secondary" id="copy-report-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Copy Report
+                    </button>
+                    <span class="report-saved-info" id="report-saved-info"></span>
+                </div>
+            </div>
+
+            <!-- Errors -->
+            <div id="error-results" class="error-results"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 XER Analytics &middot; MPXJ &middot; Pandas &middot; NetworkX &middot; Groq AI</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>

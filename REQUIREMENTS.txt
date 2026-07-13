@@ -1,0 +1,53 @@
+# Requirements for XER File Parser
+
+## Python Version
+- Python 3.6+
+
+## External Dependencies
+**NONE** - This project has zero external dependencies!
+
+All functionality is built using only Python standard library modules:
+- pathlib
+- datetime
+- argparse
+- re
+- typing
+
+## Installation
+
+No installation required. The project is ready to use immediately:
+
+1. Copy the entire project folder
+2. Run `python test.py` to verify installation
+3. Run `python interactive.py` for interactive CLI mode
+
+## Optional
+
+For development/testing:
+- No additional packages required
+- All code uses only standard library
+
+## How to Use
+
+### Basic Usage
+```bash
+python test.py                    # Run complete test
+python interactive.py              # Start interactive mode
+python cli.py load CONSTRUCTION.xer  # Load specific file
+```
+
+### As a Library
+```python
+from xerparser.src.parser import file_reader, parser
+xer = file_reader("CONSTRUCTION.xer")
+tables = parser(xer)
+```
+
+## Compatibility
+
+- Windows 7+
+- macOS 10.9+
+- Linux (all distributions)
+- Python 3.6, 3.7, 3.8, 3.9, 3.10, 3.11+
+
+Tested with Python 3.8+
